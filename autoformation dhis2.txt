@@ -1,0 +1,157 @@
+
+
+formation installer postgressql en ligne de commande
+creation de base de données avec psql
+
+https://www.youtube.com/watch?v=KyDPWA5imw4&t=11s
+
+creation de tables avec psql
+
+https://www.youtube.com/watch?v=jaNqlwlYzFM&list=PLOwKN2nB1sseE9SVO9vHO3EFZ3-55qBmk&index=5&t=210s
+
+How to install the latest version of DHIS2 (2.34.1) on Windows 10 in 2020
+
+https://www.youtube.com/watch?v=ik4sg3foXWM
+
+DHIS2 How to create a dashboard in the DHIS2/KHIS
+https://www.youtube.com/watch?v=53hfx-4uiXI
+
+documentation dhis2
+
+https://docs.dhis2.org/fr/manage/performing-system-administration/dhis-core-version-240/installation.html
+================================================================
+Installer dhis2.40 sous window 11
+1. instaler  JAVA La version jdk-11
+2. installer postgreSQL 14
+3. creer un dossier DHIS2 dans C:/dhis2
+4. creer un dossier config dans C:/dhis2/config
+5. installer apache-tomcat-9.0.75 (version dezipée dans dossier C:/dhis2
+6. configurer dans propriete "syteme" les "varriables d'environnement":
+ 6.1 dans variable utilisateur:
+  6.1.1 creer JAVA_HOME  avec valeur:C:\Program Files\Java\jdk-11
+ 6.2 dans variable systeme:
+  6.2.1 creer DHIS2_HOME avec valeur: C:\dhis2\config
+  6.2.2 verifier si non present creer GDAL_DATA avec valeur: C:\Program Files\PostgreSQL\14\gdal-data
+  6.2.3 verifier si non present inserer dans path: les valeurs: C:\Program Files\Java\jdk-11\bin
+                                                           C:\Program Files\PostgreSQL\14\bin
+                                                           C:\Program Files\PostgreSQL\14\lib
+
+ 7 creer le fichier de connexion de dhis avec postgreSQL dans C:\dhis2\config\dhis.conf
+contenu de dhis.conf =
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+#Dialogue SQL Hibernate
+connection.dialect = org.hibernate.dialect.PostgreSQLDialect
+#Classe de pilote JDBC
+connection.driver_class = org.postgresql.Driver
+#URL de connection à la base de données creer dans postgreSQL14 dont le nom est par exemple: Dhis2_40
+connection.url = jdbc:postgresql:Dhis2_40
+#Nom d'utilisateur de la base de données
+connection.username = dhis
+#Mot de passe de la base de données
+connection.password = dhis
+#Comportement du schema de la base de données, peut être valider, mettre à jour, créer, créer-suprimer
+connection.schema = update
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 8 Creer la base de donnée du nom de Dhis2_40 dans postgreSQL 14 par pgAdmin 4 OU psql
+ Comment creer la Base ? 
+- se connecter au postgreSQL 14 
+- Creer le l'utilisateur du nom = dhis et premom= dhis  bouton droit sur login/groupRoles puis creer, inscrire le name = dhis ; definir le mot de pass = dhis et assigner tous les privileges ...et ok
+- creer la data Base: (bouton droit de souri sur database ; incrire dans database = Dhis2_40 ensuite dans owner cherche et choisi "dhis" ..et ok
+9 installer (copier coller ) le dhis.war (version 2.40.0.0) dans le dossier C:\DHIS2\apache-tomcat-9.0.75\webapps
+  LANCER le tomcat par C:\DHIS2\apache-tomcat-9.0.75\bin\startup.bat pour deployement de dhis.war avec demarage serveur
+NB :Attendre la fin du déployement et debut de demarage qui est signalé par la derniere ligne par cette phrase :Le d├®marrage du serveur a pris [xxxxxxx] millisecondes
+10 lancer le navigateur web, inscrire l'url : http://localhost:8080/dhis
+le nom d'utilisateur root est "admin" et mot de pass =district pour creation des unités d'organisation ensuite creer le super utilisateur à qui toutes les unités d'organisation sont assignées....
+
+=====================================================================================================================================
+le superutilisateur dans mon instance installer est:
+USER NAME= AnaniLocal   PASS WORD= 2n2n1Local@ pour la version Dhis 2.40 installé
+======================================================================================================================================
+DHIS2 Annual Conference 2020: Scripting Custom Forms
+https://www.youtube.com/watch?v=Bklo9zyEF9w
+
+=============================================================================================================
+lien vers la plate forme vaccination covid19 dans dhis2
+https://dhis2.togosafe.gouv.tg/dhis/dhis-web-commons/security/login.action
+==========================================================================================================
+
+DHIS2 Maintenanace Page Bad Characters Fix Icons   ----appurer les anomalis des caracteres dans dhis2 installé
+https://www.youtube.com/watch?v=0l6oayZ408I
+In the case where UTF-8 characters are required (for example, Chinese characters) and the server is not natively managing UTF-8, you must set a JVM property. Perform the following configuration procedure, in addition to the previous Configure Apache Tomcat steps, to provide the server the capability to correctly translate the required UTF-8 characters:
+
+    Open the <Tomcat-install>\bin\catalina.bat or <Tomcat-install>\bin\catalina.sh file.
+    Add to the JAVA_OPTS variable -Dfile.encoding=UTF-8.
+        Example 1:
+        set JAVA_OPTS=%JAVA_OPTS% -Dfile.encoding=UTF-8
+        Example 2:
+        JAVA_OPTS=$JAVA_OPTS -Dfile.encoding=UTF-8
+        export JAVA_OPTS
+    Save the file.
+    Restart Tomcat to enable the modification.
+=========================================================================================================================================
+
+DHIS2 Creating Organisational Units Manually and Using the Auto Import Feature 
+https://www.youtube.com/watch?v=HEE1QapS1Qw
+
+Convertir fichier Excel en Fichier CSV
+https://www.youtube.com/watch?v=UJC5E2_8qxU
+
+=========================================================================================================================================
+
+Use this tool to convert JSON into CSV (Comma Separated Values) or Excel.
+https://www.convertcsv.com/json-to-csv.htm
+
+Configurer un réseau pour la production | LAN et WIFI
+https://www.youtube.com/watch?v=p4ONCaviuIU
+=========================================================================================
+UTILSATION DE L'API dhis2 : exemple de play.dhis2
+Pour sortir tous les unités d'organisation il faut l'url de base "https://play.dhis2.org/40.0.0" et la recherche de ce que l'on veut)
+https://play.dhis2.org/40.0.0/api/organisationUnits/?paging=false
+
+======Cas de tous les organisationUnits=======
+https://play.dhis2.org/40.0.0/api/organisationUnits.csv?fields=id,uid,created,url,lastUpdate,name,parent,children,displayName,description,displayDescription,openingDate,email,address,memberCount,coordinates&paging=false
+
+=======cas de tous les Elements de données=====
+https://play.dhis2.org/40.0.0/api/dataElements.csv?fields=id,uid,created,url,lastUpdate,name,parent,children,displayName,description,displayDescription,openingDate,email,address,memberCount,coordinates&paging=false
+
+=====cas de tous les indicateurs ========
+https://play.dhis2.org/40.0.0/api/indicatorss.csv?fields=id,uid,created,url,lastUpdate,name,parent,children,displayName,description,displayDescription,openingDate,email,address,memberCount,coordinates&paging=false
+
++++++++Cas des coordonnées géolocalisation++++++
+tutorial ici --> https://youtu.be/y9oxkl5uYno
+Extraction des shapefiles-format Geojson
+https://play.dhis2.org/40.0.0/api/organisationUnits.geojson?level=2&paging=false  (ceci permet seulement de lister les lieux où les coordonnées géo existe)
+
+https://play.dhis2.org/40.0.0/api/organisationUnits.json?fields=id,geometry&filter=level:eq:3&paging=false (parcontre ceci listes toutes les lieux )
+
+=========================================
+Invite de Commande Windows - Tutoriel Complet
+https://www.youtube.com/watch?v=cXp6a9dNZLQ
+
+Comment sauvegarder automatiquement la base de données PostgreSQL
+https://www.youtube.com/watch?v=aEN6D7nYwic
+
+ouvrir l'invite de commande en administrateur
+taper : 
+pg_dump -h "localhost" -U "postgres" -f "D:\\sauv\\Dhis2_40.sql" -d "Dhis2_40" 
+Comment creer une autre base vide :
+
+psql -h "localhost" -p 5432 -U "postgres"  ---entrer dans le serveur postgresql
+ou simplement écrire:
+psql -U postgres
+
+avant tout verifier si  une de ce nom existe
+
+drop database if exists dhis2_40t;
+create database dhis2_40t;               ---le nom de la base doit etre totalement en minuscule
+alter database dhis2_40t owner to dhis;   ---assigner un proprietaire "dhis"
+
+Comment restorer la base par cmd
+C:\Program Files\PostgreSQL\14\bin> psql -U "dhis" dhis2_40t <"D:\\sauv\\Dhis2_40.sql"
+==================================================================================
+Installer Linux en 5 minute sur Windows 11 - WSL2 rapide !
+https://www.youtube.com/watch?v=jXSzhCMeqZ8
+
+
+Apprendre le HTML - Tutoriel Pour Débutant (2h)
+https://www.youtube.com/watch?v=rRt-yvGQST0
