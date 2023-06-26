@@ -2,12 +2,18 @@
 https://www.youtube.com/watch?v=eXF0epLeCgo&t=986s
 
 Etape de travail avec git:
+1 creer son espace de depot dans github
+2 cloner une copie de l'espace dans le pc par la comd-> git clone "le repetoire de depot"
+3 apres une modofication , envoyer une copie dans gihub -> git push
 modification -> git add fichier
 sauvegarder la modification pourquoi? -> git commit -m "parceque..."
 creer une branch pour modifification -> git branch "nom de branch creer"
 lister les branchs existante-> git branch
 se connecter à la branch souhaitée  -> git checkout "nom de branch voulue"
 suprimer une branche -> git branche -d "nom de la branch"
+
+le travail collaboratif va consister apres modification à deux étapes:
+git push(pour poster le w) et git fetch pour le recuperer, ensuite git push
 
 ========================================================================
 …or create a new repository on the command line
