@@ -1,5 +1,14 @@
 [Cours Github] Apprendre Github de zéro : versionner son travail (1/2)
 https://www.youtube.com/watch?v=eXF0epLeCgo&t=986s
+
+Etape de travail avec git:
+modification -> git add fichier
+sauvegarder la modification pourquoi? -> git commit -m "parceque..."
+creer une branch pour modifification -> git branch "nom de branch creer"
+lister les branchs existante-> git branch
+se connecter à la branch souhaitée  -> git checkout "nom de branch voulue"
+suprimer une branche -> git branche -d "nom de la branch"
+
 ========================================================================
 …or create a new repository on the command line
 echo "# monrepertoir1" >> README.md
